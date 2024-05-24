@@ -6,7 +6,8 @@ def xor_encrypt(text, key):
     key_length = len(key)
     for i, char in enumerate(text):
         current_key = ord(key[i % key_length])
-        encrypted_text += chr(ord(char) ^ current_key)
+        encrypted_char = (ord(char) + current_key)
+        encrypted_text += chr(encrypted_char)
     return encrypted_text
 
 def xor_decrypt(encrypted_text, key):
@@ -14,7 +15,8 @@ def xor_decrypt(encrypted_text, key):
     key_length = len(key)
     for i, char in enumerate(encrypted_text):
         current_key = ord(key[i % key_length])
-        decrypted_text += chr(ord(char) ^ current_key)
+        decrypted_char = (ord(char) - current_key)
+        decrypted_text += chr(decrypted_char)
     return decrypted_text
 
 password = input("Enter your password: ")
